@@ -196,15 +196,15 @@ Seluruh DHCP Pool di atas mengecualikan sepuluh alamat host pertama (.1 hingga .
 Berikut adalah hasil pengujian permintaan ulang alamat IP menggunakan perintah `ipconfig /release` dan `ipconfig /renew` pada klien LAN wilayah serta verifikasi DHCP Relay dan sewa (lease) IP pada segmen CCTV Kota:
 
 **Request Ulang Klien LAN (PC-PEGAWAI & PC-PUSKESMAS):**
-<img src="assets/contoh.png" width="700">
-<img src="assets/contoh.png" width="700">
+<img src="assets/4pegawai.png" width="700">
+<img src="assets/4puskesmas.png" width="700">
 
 **Konfigurasi Pool DHCP pada SRV-DC & Verifikasi Helper Address R-DC:**
-<img src="assets/contoh.png" width="700">
-<img src="assets/contoh.png" width="700">
+<img src="assets/4serverdc.png" width="700">
+<img src="assets/4clidc.png" width="700">
 
 **Penerimaan Lease IP pada PC-CCTV-KOTA:**
-<img src="assets/contoh.png" width="700">
+<img src="assets/4cctv.png" width="700">
 
 Berdasarkan pengujian di atas, PC-CCTV-KOTA berhasil melepas alamat IP lama saat `ipconfig /release` dan menerima sewa baru berupa IP Address 10.72.64.12, Subnet Mask 255.255.240.0, Default Gateway 10.72.64.1, serta DNS Server 10.72.80.2 saat `ipconfig /renew` yang bersumber dari SRV-DC melalui bantuan relay R-DC.
 
@@ -335,14 +335,14 @@ Pemetaan di atas memastikan baik lalu lintas reguler dari seluruh router cabang 
 Berikut adalah hasil pengujian `ping 8.8.8.8` dan `tracert 8.8.8.8` dari beberapa wilayah, verifikasi tabel translasi NAT pada R-PUSAT, serta verifikasi tabel routing pada R-ISP:
 
 **Ping & Traceroute ke 8.8.8.8 dari Klien Wilayah:**
-<img src="assets/contoh.png" width="700">
-<img src="assets/contoh.png" width="700">
+<img src="assets/5pegawai.png" width="700">
+<img src="assets/5scada.png" width="700">
 
 **Tabel Translasi & Rule NAT pada R-PUSAT (`show ip nat translations`):**
-<img src="assets/contoh.png" width="700">
+<img src="assets/5rpusat.png" width="700">
 
 **Tabel Routing R-ISP Tanpa Rute Privat (`show ip route`):**
-<img src="assets/contoh.png" width="700">
+<img src="assets/5risp.png" width="700">
 
 Hasil pengujian menunjukkan seluruh klien berhasil menerima balasan dari 8.8.8.8, alamat privat klien tercatat berubah menjadi 203.0.113.37 pada tabel `show ip nat translations` di R-PUSAT, dan tabel routing R-ISP bersih dari blok alamat privat 10.72.0.0/16.
 
